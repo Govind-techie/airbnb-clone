@@ -1,0 +1,145 @@
+/* Base layout */
+body {
+    margin: 0;
+    padding: 24px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #222;
+    background: #fafafa;
+}
+
+/* App title aligns with page content */
+.page-title {
+    max-width: 980px; /* matches default .container width */
+    margin: 0 auto 16px;
+    padding: 0 4px;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    color: #FF385C;
+}
+
+/* When a form is present, align title to the form width */
+body:has(.form-card) .page-title {
+    max-width: 640px;
+}
+
+/* Centered content container suitable for show page */
+.container {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+/* Title */
+h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 8px 0 16px;
+}
+
+/* Listing image on show page */
+.img {
+    display: block;
+    width: 100%;
+    max-width: 980px;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    background: #eaeaea;
+}
+
+/* Details section */
+.details {
+    margin-top: 16px;
+    padding: 16px 20px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.details p {
+    margin: 8px 0;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.details p strong {
+    color: #555;
+}
+
+/* Utility: visually group labels */
+.label {
+    color: #666;
+}
+
+/* Make spacing feel airy on large screens */
+@media (min-width: 1024px) {
+    body {
+        padding: 32px;
+    }
+
+    .img {
+        height: 520px;
+    }
+}
+
+/* ==========================
+   Create Listing form styles
+   ========================== */
+.form-card {
+    max-width: 640px;
+    margin: 24px auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    background: #fafafa;
+    color: #222;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input:focus,
+.textarea:focus {
+    border-color: #c1c1c1;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
+}
+
+.textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.btn {
+    appearance: none;
+    border: 0;
+    background: #ff385c;
+    color: #fff;
+    font-weight: 600;
+    padding: 12px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: filter 0.2s ease, transform 0.02s ease;
+}
+
+.btn:hover {
+    filter: brightness(0.95);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}

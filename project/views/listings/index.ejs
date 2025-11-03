@@ -1,0 +1,14 @@
+<% layout("/layouts/boilerplate.ejs") %> 
+<body>
+    <h3>All Listings</h3>
+    <ul>
+        <% allListings.forEach(listing=> { %>
+            <li><a href="/listings/<%= listing.id %>">
+                    <%= listing.title %>
+                </a></li>
+            <% }) %>
+    </ul>
+    <form action="/listings/new" method="get">
+        <button type="submit">Add Listing</button>
+    </form>
+</body>

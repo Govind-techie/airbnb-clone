@@ -1,0 +1,24 @@
+<% layout("/layouts/boilerplate.ejs") %> 
+<body>
+    <h2>
+        <%= listing.title %>
+    </h2>
+    <img src=<%=listing.image %> alt="listingImage" class="img">
+    <div class="details">
+        <p>price: &#8377;<%= listing.price.toLocaleString('en-IN') %>
+        </p>
+        <p>location: <%= listing.location %>
+        </p>
+        <p>country: <%= listing.country %>
+        </p>
+    </div>
+
+    <div class="actions">
+        <form action="/listings/<%= listing._id %>/edit" method="get" style="display:inline-block; margin-right:8px;">
+            <button type="submit" class="btn">Edit</button>
+        </form>
+        <form action="/listings/<%= listing._id %>?_method=DELETE" method="post" style="display:inline-block;">
+            <button type="submit" class="btn" style="background:#e11d48;">Delete</button>
+        </form>
+    </div>
+</body>
