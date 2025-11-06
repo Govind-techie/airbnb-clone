@@ -1,14 +1,26 @@
-<% layout("/layouts/boilerplate.ejs") %> 
-<body>
-    <h3>All Listings</h3>
-    <ul>
-        <% allListings.forEach(listing=> { %>
-            <li><a href="/listings/<%= listing.id %>">
-                    <%= listing.title %>
-                </a></li>
+<% layout("/layouts/boilerplate.ejs") %>
+
+    <body>
+        <h3>All Listings</h3>
+
+        <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+            <% allListings.forEach(listing => { %>
+            <div class="col-auto">
+                    <a class="card-link" href="/listings/<%= listing.id %>">
+                        <div class="card" style="width: 18rem;">
+                            <img src="<%= listing.image %>" class="card-img-top" alt="listingImage" style="height: 20rem;">
+                            <div class="card-img-overlay"></div>
+                            <div class="card-body">
+                                <h5 class="card-title"><%= listing.title %></h5>
+                                <p class="card-text">
+                                    Price: &#8377;<%= listing.price.toLocaleString('en-IN') %>
+                                    <br>
+                                    Location: <%= listing.location %>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             <% }) %>
-    </ul>
-    <form action="/listings/new" method="get">
-        <button type="submit">Add Listing</button>
-    </form>
-</body>
+        </div>
+    </body>

@@ -45,7 +45,7 @@ main()
 // });
 
 app.get("/", (req, res) => {
-    res.send("Working Root Route");
+    res.send("HomePage");
 });
 
 // Index Route

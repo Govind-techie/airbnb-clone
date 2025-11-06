@@ -1,10 +1,17 @@
 /* Base layout */
 body {
     margin: 0;
-    padding: 24px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
     color: #222;
     background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+.container {
+    flex: 1;
 }
 
 /* App title aligns with page content */
@@ -19,9 +26,6 @@ body {
 }
 
 /* When a form is present, align title to the form width */
-body:has(.form-card) .page-title {
-    max-width: 640px;
-}
 
 /* Centered content container suitable for show page */
 .container {
@@ -29,117 +33,105 @@ body:has(.form-card) .page-title {
     margin: 0 auto;
 }
 
-/* Title */
-h2 {
-    font-size: 28px;
-    font-weight: 700;
-    margin: 8px 0 16px;
-}
-
-/* Listing image on show page */
-.img {
-    display: block;
-    width: 100%;
-    max-width: 980px;
-    height: 420px;
-    object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    background: #eaeaea;
-}
-
-/* Details section */
-.details {
-    margin-top: 16px;
-    padding: 16px 20px;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    background: #fff;
-}
-
-.details p {
-    margin: 8px 0;
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-.details p strong {
-    color: #555;
-}
-
 /* Utility: visually group labels */
 .label {
     color: #666;
 }
 
+.show-img {
+    height: 30vh;
+}
+
 /* Make spacing feel airy on large screens */
 @media (min-width: 1024px) {
     body {
-        padding: 32px;
-    }
-
-    .img {
-        height: 520px;
+        padding: 7px;
     }
 }
 
-/* ==========================
-   Create Listing form styles
-   ========================== */
-.form-card {
-    max-width: 640px;
-    margin: 24px auto;
-    padding: 20px;
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+
+.navbar {
+    height: 5rem;
+    background-color: white;
 }
 
-.input,
-.textarea {
+.fa-compass {
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link {
+    color: #222222 !important;
+}
+
+.nav-link:hover {
+    color: #fe424d !important;
+    text-decoration: underline;
+}
+
+.f-info-links a {
+    text-decoration: none;
+    color: grey;
+}
+
+.f-info-links, .f-info-socials, .f-info-brand {
     width: 100%;
-    padding: 12px 14px;
-    border: 1px solid #dcdcdc;
-    border-radius: 10px;
-    background: #fafafa;
-    color: #222;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.input:focus,
-.textarea:focus {
-    border-color: #c1c1c1;
-    background: #fff;
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
+.f-info-socials i {
+    font-size: 1.2rem;
+    margin: 0 0.5rem;
 }
 
-.textarea {
-    min-height: 120px;
-    resize: vertical;
+.f-info-links a:hover {
+    text-decoration: underline;
 }
 
-.btn {
-    appearance: none;
-    border: 0;
-    background: #ff385c;
-    color: #fff;
-    font-weight: 600;
-    padding: 12px 16px;
-    border-radius: 10px;
+.f-info {
+    display: flex;
+    height: 8rem;
+    background-color: #f7f7f7;
+    flex-wrap: wrap;
+}
+
+/* cards */
+.card {
+    border: none !important;
+    margin: 0; /* prevent anchor from growing due to child margins */
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+    object-fit: cover !important;
+}
+
+/* Make entire card clickable without changing text color/underline */
+.card-link {
+    display: inline-block; /* shrink to card width */
+    color: inherit;
+    text-decoration: none;
+    width: max-content; /* fit to the card's intrinsic width */
+}
+
+.card-link:hover {
+    text-decoration: none;
+}
+
+/* card effect */
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.2;
+    background-color: white;
     cursor: pointer;
-    transition: filter 0.2s ease, transform 0.02s ease;
 }
 
-.btn:hover {
-    filter: brightness(0.95);
-}
-
-.btn:active {
-    transform: translateY(1px);
+.add-btn {
+    background-color: #fe424d !important;
+    border: none !important;
 }
