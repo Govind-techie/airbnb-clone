@@ -98,7 +98,7 @@ body {
 }
 
 /* cards */
-.card {
+.listing-card {
     border: none !important;
     margin: 0; /* prevent anchor from growing due to child margins */
 }
