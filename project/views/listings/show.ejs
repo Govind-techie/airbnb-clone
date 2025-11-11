@@ -1,42 +1,48 @@
 <% layout("/layouts/boilerplate.ejs") %>
 
-<body>
-    <div class="row mt-3 mb-3">
-        <div class="col-8 offset-3 mb-2">
-            <h2 class="text-dark fw-bold">
-                <%= listing.title %>
-            </h2>
-        </div>
-        <div class="card col-6 offset-3 border rounded-4 shadow-sm p-3 mt-2 listing-card">
-            <img src="<%= listing.image %>" class="card-img-top show-img" alt="listingImage">
-            <div class="card-body">
-                <p class="card-text">
-                    <span class="fw-semibold"></span>
-                    <%= listing.description %>
-                </p>
-                <hr>
-                <p class="card-text">
-                    <span class="fw-semibold">Price: </span>&#8377; <%= listing.price.toLocaleString('en-IN') %>
-                </p>
-                <p class="card-text">
-                    <span class="fw-semibold">Location: </span>
-                    <%= listing.location %>
-                </p>
-                <p class="card-text">
-                    <span class="fw-semibold">Country: </span>
-                    <%= listing.country %>
-                </p>
+    <body>
+        <div class="row mt-3 mb-3">
+            <div class="col-8 offset-3 mb-2">
+                <h2 class="text-dark fw-bold">
+                    <%= listing.title %>
+                </h2>
+            </div>
+            <div class="card col-6 offset-3 border rounded-4 shadow-sm p-3 mt-2 listing-card">
+                <img src="<%= listing.image %>" class="card-img-top show-img" alt="listingImage">
+                <div class="card-body">
+                    <p class="card-text">
+                        <span class="fw-semibold"></span>
+                        <strong>Owned By: <%= listing.owner.username %></strong>
+                    </p>
+                    <p class="card-text">
+                        <span class="fw-semibold"></span>
+                        <%= listing.description %>
+                    </p>
+                    <hr>
+                    <p class="card-text">
+                        <span class="fw-semibold">Price: </span>&#8377; <%= listing.price.toLocaleString('en-IN') %>
+                    </p>
+                    <p class="card-text">
+                        <span class="fw-semibold">Location: </span>
+                        <%= listing.location %>
+                    </p>
+                    <p class="card-text">
+                        <span class="fw-semibold">Country: </span>
+                        <%= listing.country %>
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="d-flex offset-3 gap-3 mt-3 mb-3">
-        <form action="/listings/<%= listing._id %>/edit" method="get">
-            <button type="submit" class="btn btn-outline-secondary">Edit</button>
-        </form>
-        <form action="/listings/<%= listing._id %>?_method=DELETE" method="post">
-            <button type="submit" class="btn btn-outline-danger">Delete</button>
-        </form>
-    </div>
+        <% if (currentUser && listing.owner && currentUser._id.equals(listing.owner._id)) { %>
+            <div class="d-flex offset-3 gap-3 mt-3 mb-3">
+                <form action="/listings/<%= listing._id %>/edit" method="get">
+                    <button type="submit" class="btn btn-outline-secondary">Edit</button>
+                </form>
+                <form action="/listings/<%= listing._id %>?_method=DELETE" method="post">
+                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                </form>
+            </div>
+            <% } %>
 
-    <%- include("../includes/review.ejs") %> 
-</body>
+        <%- include("../includes/review.ejs") %>
+    </body>

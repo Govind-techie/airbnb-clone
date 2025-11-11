@@ -10,6 +10,19 @@
         <a class="nav-link" href="/listings">All Listing</a>
         <a class="nav-link" href="/listings/new">Add New Listing</a>
       </div>
+      <div class="dropdown ms-auto">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+          <% if (!currentUser) { %>
+            <li><a class="dropdown-item" href="/user/signup">Sign Up</a></li>
+            <li><a class="dropdown-item" href="/user/login">Login</a></li>
+          <% } else { %>
+            <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
+          <% } %>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>

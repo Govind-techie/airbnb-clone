@@ -135,3 +135,7 @@ body {
     background-color: #fe424d !important;
     border: none !important;
 }
+
+.login-link:hover {
+    text-decoration: underline !important;
+}
