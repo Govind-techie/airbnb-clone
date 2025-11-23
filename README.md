@@ -4,6 +4,10 @@
 <br>
 *A comprehensive Airbnb clone built from scratch, integrating frontend, backend, and database. This project is structured to reflect a real-world full-stack application, covering everything from API design and database relationships to frontend integration and deployment.*
 
+🌐 **Live Demo**: [https://airbnb-clone-xruu.onrender.com](https://airbnb-clone-xruu.onrender.com)
+
+✅ **Status**: Fully deployed and hosted on Render cloud platform
+
 ---
 
 ## 🚀 Features
@@ -391,6 +395,33 @@ The application includes comprehensive error handling:
 - Configure CORS if building separate frontend
 - Use reverse proxy (nginx) for production
 - Enable HTTPS with SSL certificates
+
+## 🌐 Live Deployment
+
+### Project is live at: https://airbnb-clone-xruu.onrender.com
+
+The application is **fully deployed and hosted on Render** cloud platform with:
+- **Frontend**: EJS templates served from Express.js
+- **Backend**: Node.js/Express server running on Render
+- **Database**: MongoDB Atlas cloud database
+- **Images**: Cloudinary cloud storage
+- **Maps**: MapTiler cloud-based mapping service
+- **SSL/HTTPS**: Automatically enabled by Render
+- **Auto-scaling**: Deployed on Render's cloud infrastructure
+
+### How to Access
+1. Visit [https://airbnb-clone-xruu.onrender.com](https://airbnb-clone-xruu.onrender.com)
+2. Sign up for a new account or log in
+3. Browse, create, and manage property listings
+4. Leave reviews and ratings
+5. Explore properties on interactive maps
+
+### Deployment Stack
+- **Hosting Platform**: Render
+- **Web Service**: Node.js/Express
+- **Database**: MongoDB Atlas
+- **CDN & Storage**: Cloudinary
+- **Environment**: Production with automatic HTTPS
 
 ## 📚 Learning Outcomes
 
