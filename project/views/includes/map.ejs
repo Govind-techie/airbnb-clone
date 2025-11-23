@@ -1,0 +1,13 @@
+<div class="col-8 mb-3">
+    <h3>Where you'll be</h3>
+    <div id="map"></div>
+</div>
+
+<link href="https://cdn.maptiler.com/maptiler-sdk-js/v3.8.0/maptiler-sdk.css" rel="stylesheet" />
+<script src="https://cdn.maptiler.com/maptiler-sdk-js/v3.8.0/maptiler-sdk.umd.min.js"></script>
+
+<script>
+    const MAP_TOKEN = "<%= process.env.MAP_TOKEN %>";
+    const coordinates = <%- JSON.stringify(listing.geometry.coordinates) %>;
+</script>
+<script src="/js/map.js"></script>

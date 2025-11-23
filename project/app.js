@@ -1,3 +1,9 @@
+if (process.env.NODE_ENV != "production"){
+    require("dotenv").config();
+}
+
+console.log(process.env.SECRET)
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -7,11 +13,12 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/expressError.js")
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
-const { isLoggedIn } = require("./middleware.js");
+
 
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
@@ -27,9 +34,10 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 app.use(express.urlencoded({ extended: true }));
 
-const MONGO_URL = 'mongodb://127.0.0.1:27017/wanderlust'
+const dbUrl = process.env.ATLAS_DB_URL
+
 async function main() {
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(dbUrl);
 };
 
 main()
@@ -40,19 +48,28 @@ main()
         console.log(err);
     });
 
-app.get("/", (req, res) => {
-    res.send("HomePage ");
+
+
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  collectionName: "sessions",
+  ttl: 14 * 24 * 60 * 60
+});
+
+store.on("error", (err) => {
+    console.log("ERROR in MONGO SESSION STORE", err);
 });
 
 const sessionOptions = {
-    secret: "secretcode",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
+    store,
     cookie: {
         expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
         maxAge: 7 * 24 * 60 * 60 * 1000,
         httpOnly: true,
-    }
+    },
 };
 
 app.use(session(sessionOptions));
@@ -95,6 +112,9 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
+    if (res.headersSent) {
+        return next(err);
+    }
     let { status = 500, message = "something went wrong!" } = err;
     res.status(status).render("error.ejs", { err });
 });

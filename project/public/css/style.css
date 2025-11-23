@@ -10,13 +10,28 @@ body {
 
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
+}
+
 .container {
     flex: 1;
 }
 
 /* App title aligns with page content */
 .page-title {
-    max-width: 980px; /* matches default .container width */
+    max-width: 980px;
+    /* matches default .container width */
     margin: 0 auto 16px;
     padding: 0 4px;
     font-size: 28px;
@@ -66,7 +81,16 @@ body {
 
 .nav-link:hover {
     color: #fe424d !important;
-    text-decoration: underline;
+    background-color: #f3f3f3;
+    padding: 6px 12px;
+    border-radius: 20px;
+    text-decoration: none !important;
+    transition: 0.2s ease-in-out;
+}
+
+.nav-link {
+    padding: 6px 12px;
+    border-radius: 20px;
 }
 
 .f-info-links a {
@@ -74,7 +98,9 @@ body {
     color: grey;
 }
 
-.f-info-links, .f-info-socials, .f-info-brand {
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
     width: 100%;
     display: flex;
     align-items: center;
@@ -100,7 +126,8 @@ body {
 /* cards */
 .listing-card {
     border: none !important;
-    margin: 0; /* prevent anchor from growing due to child margins */
+    margin: 0;
+    /* prevent anchor from growing due to child margins */
 }
 
 .card-img-top {
@@ -110,10 +137,12 @@ body {
 
 /* Make entire card clickable without changing text color/underline */
 .card-link {
-    display: inline-block; /* shrink to card width */
+    display: inline-block;
+    /* shrink to card width */
     color: inherit;
     text-decoration: none;
-    width: max-content; /* fit to the card's intrinsic width */
+    width: max-content;
+    /* fit to the card's intrinsic width */
 }
 
 .card-link:hover {
@@ -138,4 +167,85 @@ body {
 
 .login-link:hover {
     text-decoration: underline !important;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Main wrapper centered */
+.search-container {
+  width: 60%;
+  margin: 30px auto;
+}
+
+/* Parent pill box */
+.search-box {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  padding: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  transition: 0.2s;
+}
+
+/* Hover Effect like Airbnb */
+.search-box:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  border-color: #ccc;
+}
+
+/* Individual sections */
+.field {
+  flex: 1;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Labels styling */
+.field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+}
+
+/* Input styling */
+.field input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+/* Divider line between fields */
+.divider {
+  width: 1px;
+  height: 30px;
+  background: #e0e0e0;
+}
+
+/* Search Button */
+.search-btn {
+  background-color: #ff385c;
+  border: none;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: 0.2s;
+}
+
+/* Hover effect Button */
+.search-btn:hover {
+  background-color: #e61e4d;
 }

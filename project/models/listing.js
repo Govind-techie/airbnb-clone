@@ -13,9 +13,8 @@ const listingSchema = new Schema({
         required: [true, "Description is required"],
     },
     image: {
-        type: String,
-        default: "https://media.istockphoto.com/id/1453462931/photo/maldives-hotel-beach-resort-on-tropical-island-with-aerial-drone-view.jpg?s=1024x1024&w=is&k=20&c=OWxWTv4Pf0oUwDdhuOrfjcyceotLLlpHqFwmsBjQIyw=",
-        set: (v) => v === "" ? "https://media.istockphoto.com/id/1453462931/photo/maldives-hotel-beach-resort-on-tropical-island-with-aerial-drone-view.jpg?s=1024x1024&w=is&k=20&c=OWxWTv4Pf0oUwDdhuOrfjcyceotLLlpHqFwmsBjQIyw=" : v,
+        url: String,
+        filename: String,
     },
     price: {
         type: Number,
@@ -40,13 +39,24 @@ const listingSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User",
     },
+    geometry: {
+        type: {
+            type: String,
+            enum: ["Point"],   // must always be "Point"
+            required: true
+        },
+        coordinates: {
+            type: [Number],     // [longitude, latitude]
+            required: true
+        }
+    }
 });
 
-listingSchema.post("findOneAndDelete", async(listing) => {
+listingSchema.post("findOneAndDelete", async (listing) => {
     if (listing) {
-        await Review.deleteMany({_id: {$in: listing.reviews}});
+        await Review.deleteMany({ _id: { $in: listing.reviews } });
     }
-}); 
+});
 
 const Listing = Model("Listing", listingSchema);
 module.exports = Listing;

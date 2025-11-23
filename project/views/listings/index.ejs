@@ -1,25 +1,61 @@
-<% layout("/layouts/boilerplate.ejs") %>
-    <body>
-        <h3>All Listings</h3>
+<% layout('layouts/boilerplate') %>
 
-        <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-            <% allListings.forEach(listing => { %>
-            <div class="col-auto">
-                    <a class="card-link" href="/listings/<%= listing.id %>">
+    <body>
+
+        <form action="/listings" method="get" class="search-container">
+            <div class="search-box">
+
+                <div class="field">
+                    <label>Where</label>
+                    <input type="text" placeholder="Search destinations" name="location" />
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="field">
+                    <label>When</label>
+                    <input type="text" placeholder="Add dates" name="dates" />
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="field">
+                    <label>Who</label>
+                    <input type="number" placeholder="Add guests" name="guests" />
+                </div>
+                <button type="button" class="search-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+            </div>
+        </form>
+
+
+
+        <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+            <% allListings.forEach(listing=> { %>
+                <div class="col-auto">
+                    <a class="card-link" href="/listings/<%= listing.id %>"
+                        data-location="<%= listing.location.toLowerCase() %>">
                         <div class="card listing-card" style="width: 18rem;">
-                            <img src="<%= listing.image %>" class="card-img-top" alt="listingImage" style="height: 20rem;">
+                            <img src="<%= listing.image.url %>" class="card-img-top" alt="listingImage"
+                                style="height: 20rem;">
                             <div class="card-img-overlay"></div>
                             <div class="card-body">
-                                <h5 class="card-title"><%= listing.title %></h5>
+                                <h5 class="card-title">
+                                    <%= listing.title %>
+                                </h5>
                                 <p class="card-text">
                                     Price: &#8377;<%= listing.price.toLocaleString('en-IN') %>
-                                    <br>
-                                    Location: <%= listing.location %>
+                                        <br>
+                                        Location: <%= listing.location %>
                                 </p>
                             </div>
                         </div>
                     </a>
                 </div>
-            <% }) %>
+                <% }) %>
         </div>
     </body>
+
+    <script src="/js/search.js"></script>
